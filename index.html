@@ -74,7 +74,7 @@
 <p>A <a href="https://gradle.org/install">Gradle distribution</a>, version 3.5 or better</p>
 </li>
 <li>
-<p>An installer C compiler. See which {user-manual}native_software.html#native-binaries:tool-chain-support[C tool chains] are supported by Gradle and whether you have to do any {user-guide}native_software.html#sec:tool_chain_installation[installation configuration] for your platform.</p>
+<p>An installer C++ compiler. See which <a href="https://docs.gradle.org/3.5/userguide/native_software.html#native-binaries:tool-chain-support">C++ tool chains</a> are supported by Gradle and whether you have to do any <a href="https://docs.gradle.org/3.5/userguide/native_software.html#sec:tool_chain_installation">installation configuration</a> for your platform.</p>
 </li>
 </ul>
 </div>
@@ -84,7 +84,7 @@
 <h2 id="layout"><a class="anchor" href="#layout"></a>Layout</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The first step is to create a folder for the new project and change directory into it.</p>
+<p>The first step is to create a folder for the new project and change folder into it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -115,7 +115,7 @@ model { <i class="conum" data-value="2"></i><b>(2)</b>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>All native build defnitiions are done within a <code>model</code> block.</td>
+<td>All native build definitions are done within a <code>model</code> block.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -160,10 +160,10 @@ buildDependentsMainExecutable - Build dependents of executable 'main:executable'
 <h2 id="add_source_code"><a class="anchor" href="#add_source_code"></a>Add source code</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By convention, C projects in Gradle will follow a more contemporary layout. This can be troublesome for you if you are used to building C code with build tools that do not use a convention-over-configuration approach. Rest assured that Gradle is very configurable in this regard and should you need to migrate a C project to Gradle you can consult the {user-manual}native_software.html#sec:cpp_sources[C sources] section of the User Guide.</p>
+<p>By convention, C++ projects in Gradle will follow a more contemporary layout. This can be troublesome for you if you are used to building C++ code with build tools that do not use a convention-over-configuration approach. Rest assured that Gradle is very configurable in this regard and should you need to migrate a C++ project to Gradle you can consult the <a href="https://docs.gradle.org/3.5/userguide/native_software.html#sec:cpp_sources">C++ sources</a> section of the User Guide.</p>
 </div>
 <div class="paragraph">
-<p>In the <code>build.gradle</code> you have previsouly defined the executable component to be called <code>main</code>. By convention, this will means that Gradle will look in <code>src/main/cpp</code> for source files and non-exported header files. Create this directory</p>
+<p>In the <code>build.gradle</code> you have previsouly defined the executable component to be called <code>main</code>. By convention, this will means that Gradle will look in <code>src/main/cpp</code> for source files and non-exported header files. Create this folder</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -230,7 +230,7 @@ BUILD SUCCESSFUL</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Look inside the <code>build</code> directory and you will notice the appearance of a <code>exe</code> folder. By convention Gradle will place all executables in subfolders named according to the componenet name. In this case you will find your assembled executable in <code>build/exe/main</code> and it will be called <code>main</code> (or <code>main.exe</code> under Windows).</p>
+<p>Look inside the <code>build</code> folder and you will notice the appearance of a <code>exe</code> folder. By convention Gradle will place all executables in subfolders named according to the component name. In this case you will find your assembled executable in <code>build/exe/main</code> and it will be called <code>main</code> (or <code>main.exe</code> under Windows).</p>
 </div>
 <div class="paragraph">
 <p>Now run your newly built executable.</p>
@@ -274,10 +274,10 @@ Hello World</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Testing using <a href="http://cunit.sourceforge.net">CUnit</a> or [GoogleTest] is supported. Gradle will respectively create a matching <a href="https://docs.gradle.org/3.5/dsl/org.gradle.nativeplatform.test.cunit.CUnitTestSuiteSpec.html">CUnitTestSuiteSpec</a> or <a href="https://docs.gradle.org/3.5/dsl/native_software.html#native_binaries:google_test">GoogleTestTestSuiteSpec </a> component for the executable you have defined in this guide. See  the <a href="https://docs.gradle.org/3.5/userguide/native_software.html#native_binaries:cunit">CUnit support</a> and <a href="https://docs.gradle.org/3.5/userguide/native_software.html#native_binaries:google_test">GoogleTest support</a> sections in  the User Guide for more details.</p>
+<p>Testing using <a href="http://cunit.sourceforge.net">CUnit</a> or <a href="https://github.com/google/googletest">GoogleTest</a> is supported. Gradle will respectively create a matching <a href="https://docs.gradle.org/3.5/dsl/org.gradle.nativeplatform.test.cunit.CUnitTestSuiteSpec.html">CUnitTestSuiteSpec</a> or <a href="https://docs.gradle.org/3.5/dsl/native_software.html#native_binaries:google_test">GoogleTestTestSuiteSpec </a> component for the executable you have defined in this guide. See  the <a href="https://docs.gradle.org/3.5/userguide/native_software.html#native_binaries:cunit">CUnit support</a> and <a href="https://docs.gradle.org/3.5/userguide/native_software.html#native_binaries:google_test">GoogleTest support</a> sections in  the User Guide for more details.</p>
 </li>
 <li>
-<p>As there is no 'standard' way of creating documentation for C projects, the `cpp` plugin does not offer a task to generate documentation. If you do use the popular http://www.stack.nl/~dimitri/doxygen[Doxygen] tool for documenting C code, you may want to have a look at the <a href="https://plugins.gradle.org/plugin/org.ysb33r.doxygen">Doxygen plugin</a> for Gradle</p>
+<p>As there is no 'standard' way of creating documentation for C++ projects, the <code>cpp</code> plugin does not offer a task to generate documentation. If you do use the popular <a href="http://www.stack.nl/~dimitri/doxygen">Doxygen</a> tool for documenting C++ code, you may want to have a look at the <a href="https://plugins.gradle.org/plugin/org.ysb33r.doxygen">Doxygen plugin</a> for Gradle</p>
 </li>
 </ul>
 </div>
@@ -286,7 +286,7 @@ Hello World</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-03 13:50:05 UTC
+Last updated 2017-05-03 14:23:42 UTC
 </div>
 </div>
 </body>
