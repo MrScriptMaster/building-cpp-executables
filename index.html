@@ -3,14 +3,14 @@
 <head><link crossorigin href="//assets.gradle.com" rel="preconnect">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i">
 <link rel="stylesheet" href="https://guides.gradle.org/css/asciidoctor.css">
-<link rel="stylesheet" href="https://guides.gradle.org/css/docs-blue-theme-4.5.2.css">
+<link rel="stylesheet" href="https://guides.gradle.org/css/docs-blue-theme-4.7.css">
 <link rel="apple-touch-icon" sizes="180x180" href="https://guides.gradle.org/icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-32x32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="https://guides.gradle.org/icon/manifest.json">
 <link rel="mask-icon" href="https://guides.gradle.org/icon/safari-pinned-tab.svg" color="#5bbad5">
 <link rel="shortcut icon" href="https://guides.gradle.org/icon/favicon.ico">
-<script defer src="https://guides.gradle.org/js/guides.js"></script>
+<script defer src="https://guides.gradle.org/js/guides-4.7.js"></script>
 <script defer src="https://guides.gradle.org/js/set-time-to-complete-text.js"></script>
 <script async src="https://guides.gradle.org/js/autotrack.js"></script>
 
@@ -21,7 +21,6 @@
 <meta name="author" content="Schalk Cronjé">
 <title>Building C++ Executables</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
 <body class="article">
 <header class="site-layout__header site-header" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
@@ -126,10 +125,10 @@
 <p>The Java Development Kit (JDK), version 1.7 or higher</p>
 </li>
 <li>
-<p>A <a href="https://gradle.org/install">Gradle distribution</a>, version 4.6 or better</p>
+<p>A <a href="https://gradle.org/install">Gradle distribution</a>, version 4.7 or better</p>
 </li>
 <li>
-<p>An installed C++ compiler. See which <a href="https://docs.gradle.org/4.6/userguide/native_software.html#native-binaries:tool-chain-support">C++ tool chains</a> are supported by Gradle and whether you have to do any <a href="https://docs.gradle.org/4.6/userguide/native_software.html#sec:tool_chain_installation">installation configuration</a> for your platform.</p>
+<p>An installed C++ compiler. See which <a href="https://docs.gradle.org/4.7/userguide/native_software.html#native-binaries:tool-chain-support">C++ tool chains</a> are supported by Gradle and whether you have to do any <a href="https://docs.gradle.org/4.7/userguide/native_software.html#sec:tool_chain_installation">installation configuration</a> for your platform.</p>
 </li>
 </ul>
 </div>
@@ -139,7 +138,7 @@
 <h2 id="layout"><a class="anchor" href="#layout"></a><a class="link" href="#layout">Layout</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The first step is to create a folder for the new project and add a <a href="https://docs.gradle.org/4.6/userguide/gradle_wrapper.html#sec:wrapper_generation">Gradle Wrapper</a> to the project.</p>
+<p>The first step is to create a folder for the new project and add a <a href="https://docs.gradle.org/4.7/userguide/gradle_wrapper.html#sec:wrapper_generation">Gradle Wrapper</a> to the project.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -166,11 +165,11 @@ BUILD SUCCESSFUL</pre>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">apply plugin : <span class="string"><span class="delimiter">'</span><span class="content">cpp</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">apply plugin : 'cpp' <i class="conum" data-value="1"></i><b>(1)</b>
 
 model { <i class="conum" data-value="2"></i><b>(2)</b>
     components {
-        main(NativeExecutableSpec)  <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
+        main(NativeExecutableSpec) <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
     }
 }</code></pre>
 </div>
@@ -191,7 +190,7 @@ model { <i class="conum" data-value="2"></i><b>(2)</b>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>An executable is specified by using <a href="https://docs.gradle.org/4.6/dsl/org.gradle.nativeplatform.NativeExecutableSpec.html">NativeExecutableSpec</a>.</td>
+<td>An executable is specified by using <a href="https://docs.gradle.org/4.7/dsl/org.gradle.nativeplatform.NativeExecutableSpec.html">NativeExecutableSpec</a>.</td>
 </tr>
 </table>
 </div>
@@ -228,7 +227,7 @@ buildDependentsMainExecutable - Build dependents of executable 'main:executable'
 <h2 id="add_source_code"><a class="anchor" href="#add_source_code"></a><a class="link" href="#add_source_code">Add source code</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By convention, C++ projects in Gradle will follow a more contemporary layout. This can be troublesome for you if you are used to building C++ code with build tools that do not use a convention-over-configuration approach. Rest assured that Gradle is very configurable in this regard and should you need to migrate a C++ project to Gradle you can consult the <a href="https://docs.gradle.org/4.6/userguide/native_software.html#sec:cpp_sources">C++ sources</a> section of the User Guide.</p>
+<p>By convention, C++ projects in Gradle will follow a more contemporary layout. This can be troublesome for you if you are used to building C++ code with build tools that do not use a convention-over-configuration approach. Rest assured that Gradle is very configurable in this regard and should you need to migrate a C++ project to Gradle you can consult the <a href="https://docs.gradle.org/4.7/userguide/native_software.html#sec:cpp_sources">C++ sources</a> section of the User Guide.</p>
 </div>
 <div class="paragraph">
 <p>In the <code>build.gradle</code> you have previsouly defined the executable component to be called <code>main</code>. By convention, this will means that Gradle will look in <code>src/main/cpp</code> for source files and non-exported header files. Create this folder</p>
@@ -244,12 +243,12 @@ buildDependentsMainExecutable - Build dependents of executable 'main:executable'
 <div class="listingblock">
 <div class="title">src/main/cpp/main.cpp</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="cpp"><span class="preprocessor">#include</span> <span class="include">&lt;iostream&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="preprocessor">#include</span> <span class="include">&quot;greeting.hpp&quot;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<pre class="prettyprint highlight"><code class="language-cpp" data-lang="cpp">#include &lt;iostream&gt;  <i class="conum" data-value="1"></i><b>(1)</b>
+#include "greeting.hpp" <i class="conum" data-value="2"></i><b>(2)</b>
 
-<span class="predefined-type">int</span> main(<span class="predefined-type">int</span> argc, <span class="predefined-type">char</span>** argv) {
+int main(int argc, char** argv) {
     std::cout &lt;&lt; greeting &lt;&lt; std::endl;
-    <span class="keyword">return</span> <span class="integer">0</span>;
+    return 0;
 }</code></pre>
 </div>
 </div>
@@ -268,14 +267,14 @@ buildDependentsMainExecutable - Build dependents of executable 'main:executable'
 <div class="listingblock">
 <div class="title">src/main/cpp/greeting.hpp</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="cpp"><span class="preprocessor">#ifndef</span> GRADLE_GUIDE_EXAMPLE_GREETING_HPP__
-<span class="preprocessor">#define</span> GRADLE_GUIDE_EXAMPLE_GREETING_HPP__
+<pre class="prettyprint highlight"><code class="language-cpp" data-lang="cpp">#ifndef GRADLE_GUIDE_EXAMPLE_GREETING_HPP__
+#define GRADLE_GUIDE_EXAMPLE_GREETING_HPP__
 
-<span class="keyword">namespace</span> {
-    <span class="directive">const</span> <span class="predefined-type">char</span> * greeting = <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello, World</span><span class="delimiter">&quot;</span></span>;
+namespace {
+    const char * greeting = "Hello, World";
 }
 
-<span class="preprocessor">#endif</span></code></pre>
+#endif</code></pre>
 </div>
 </div>
 </div>
@@ -354,7 +353,7 @@ Hello World</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Testing using <a href="http://cunit.sourceforge.net">CUnit</a> or <a href="https://github.com/google/googletest">GoogleTest</a> is supported. Gradle will respectively create a matching <a href="https://docs.gradle.org/4.6/dsl/org.gradle.nativeplatform.test.cunit.CUnitTestSuiteSpec.html">CUnitTestSuiteSpec</a> or <a href="https://docs.gradle.org/4.6/dsl/org.gradle.nativeplatform.test.googletest.GoogleTestTestSuiteSpec.html">GoogleTestTestSuiteSpec</a> component for the executable you have defined in this guide. See  the <a href="https://docs.gradle.org/4.6/userguide/native_software.html#native_binaries:cunit">CUnit support</a> and <a href="https://docs.gradle.org/4.6/userguide/native_software.html#native_binaries:google_test">GoogleTest support</a> sections in  the User Guide for more details.</p>
+<p>Testing using <a href="http://cunit.sourceforge.net">CUnit</a> or <a href="https://github.com/google/googletest">GoogleTest</a> is supported. Gradle will respectively create a matching <a href="https://docs.gradle.org/4.7/dsl/org.gradle.nativeplatform.test.cunit.CUnitTestSuiteSpec.html">CUnitTestSuiteSpec</a> or <a href="https://docs.gradle.org/4.7/dsl/org.gradle.nativeplatform.test.googletest.GoogleTestTestSuiteSpec.html">GoogleTestTestSuiteSpec</a> component for the executable you have defined in this guide. See  the <a href="https://docs.gradle.org/4.7/userguide/native_software.html#native_binaries:cunit">CUnit support</a> and <a href="https://docs.gradle.org/4.7/userguide/native_software.html#native_binaries:google_test">GoogleTest support</a> sections in  the User Guide for more details.</p>
 </li>
 <li>
 <p>As there is no 'standard' way of creating documentation for C++ projects, the <code>cpp</code> plugin does not offer a task to generate documentation. If you do use the popular Doxygen tool for documenting C++ code, you may want to have a look at the <a href="https://plugins.gradle.org/plugin/org.ysb33r.doxygen">Doxygen plugin</a> for Gradle</p>
@@ -372,6 +371,9 @@ Hello World</pre>
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+<script>prettyPrint()</script>
 <footer class="site-layout__footer site-footer" itemscope="itemscope" itemtype="https://schema.org/WPFooter">
     <nav class="site-footer__navigation" itemtype="https://schema.org/SiteNavigationElement">
         <section class="site-footer__links">
